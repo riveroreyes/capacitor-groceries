@@ -1,0 +1,9 @@
+<ion-item>
+  <ion-label>Quantity</ion-label>
+  <ion-select (ionChange)="pick($event.detail.value, selectedUnit)">
+    <ion-select-option *ngFor="let q of qtyList" [value]="q">{{ q }}</ion-select-option>
+  </ion-select>
+  <ion-select [(ngModel)]="selectedUnit">
+    <ion-select-option *ngFor="let u of units" [value]="u">{{ u }}</ion-select-option>
+  </ion-select>
+</ion-item>

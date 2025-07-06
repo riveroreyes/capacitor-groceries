@@ -1,0 +1,28 @@
+.app-logo {
+  height: 40px;
+  margin: 8px 0;
+}
+
+.app-background {
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assets/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18; // Ajusta la opacidad al gusto
+  pointer-events: none;
+}
+
+/* Asegura que el contenido está encima del fondo */
+.app-content, ion-menu, ion-app, ion-title {
+  position: absolute;
+  z-index: 1;
+}
+
+.app-content, ion-toolbar {
+    width: 100dvw;
+}

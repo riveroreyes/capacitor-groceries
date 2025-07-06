@@ -1,0 +1,47 @@
+<div class="app-inventory">
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inventory</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (submit)="addProduct(); $event.preventDefault()" class="ion-padding">
+    <ion-item>
+      <ion-label position="floating">Product name</ion-label>
+      <ion-input [(ngModel)]="newProduct.name" name="name" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Default Unit</ion-label>
+      <ion-select [(ngModel)]="newProduct.defaultUnit" name="defaultUnit" required>
+        <ion-select-option *ngFor="let unit of units" [value]="unit">{{unit}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Category</ion-label>
+      <ion-input [(ngModel)]="newProduct.category" name="category"></ion-input>
+    </ion-item>
+    <ion-button expand="block" type="submit" class="ion-margin-top" [disabled]="!newProduct.name || !newProduct.defaultUnit">
+      Add Product
+    </ion-button>
+  </form>
+
+  <ion-list>
+    <ion-list-header>Product List</ion-list-header>
+    <ion-item-sliding *ngFor="let product of products">
+      <ion-item>
+        <ion-label>
+          <h2>{{ product.name }}</h2>
+          <p>Unit: {{ product.defaultUnit }} | Category: {{ product.category }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deleteProduct(product.id)">
+          <ion-icon name="trash" slot="icon-only"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+
+</div>
